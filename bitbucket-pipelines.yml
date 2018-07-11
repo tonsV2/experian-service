@@ -42,3 +42,7 @@ pipelines:
             - docker-compose push release
           services:
             - docker
+definitions:
+  services:
+    docker:
+      memory: 3072
