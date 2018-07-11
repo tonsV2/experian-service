@@ -49,6 +49,8 @@ dependencies {
     compile 'dk.rki.webservices:client:0.0.1-SNAPSHOT'
     compile 'javax.xml.ws:jaxws-api:2.1'
 
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.9.6'
+
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'com.fasterxml.jackson.module:jackson-module-kotlin'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
