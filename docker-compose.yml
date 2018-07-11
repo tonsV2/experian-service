@@ -1,0 +1,13 @@
+version: "3"
+services:
+  release:
+    build:
+      context: .
+      args:
+        mavenUser: ${MAVEN_USER}
+        mavenPass: ${MAVEN_PASS}
+    ports:
+      - 8080:8080
+    environment:
+      EXPERIAN_USERNAME: ${EXPERIAN_USERNAME}
+      EXPERIAN_PASSWORD: ${EXPERIAN_PASSWORD}

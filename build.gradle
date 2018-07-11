@@ -40,7 +40,7 @@ repositories {
         url 'https://artifactory.internal.energisk.eu/artifactory/my-virtual'
         credentials {
             username "$mavenUser"
-            password "$mavenPassword"
+            password "$mavenPass"
         }
     }
 }
