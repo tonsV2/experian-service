@@ -14,7 +14,7 @@ class ExperianController(private val experianService: ExperianService) {
     @GetMapping("/check")
     fun getCheckPerson(@RequestParam cpr: String): ResponseEntity<*> {
         return try {
-            val paymentRemarks = experianService.queryPaymentRemarksPerson(cpr)
+            val paymentRemarks = experianService.queryPersonPaymentRemarks(cpr)
             ResponseEntity.ok(ExperianResponse("success", paymentRemarks, true))
         } catch (e: ExperianException) {
             ResponseEntity.badRequest().body(e.text)
@@ -22,8 +22,13 @@ class ExperianController(private val experianService: ExperianService) {
     }
 
     @GetMapping("/check-company")
-    fun getCheckCompany(@RequestParam cvr: String): FirmaRegistreringData? {
-        return experianService.queryCompany(cvr)
+    fun getCheckCompany(@RequestParam cvr: String): ResponseEntity<*> {
+        return try {
+            val paymentRemarks = experianService.queryCompanyPaymentRemarks(cvr)
+            ResponseEntity.ok(ExperianResponse("success", paymentRemarks, true))
+        } catch (e: ExperianException) {
+            ResponseEntity.badRequest().body(e.text)
+        }
     }
 }
 
