@@ -1,0 +1,44 @@
+options:
+  docker: true
+
+pipelines:
+  default:
+    - step:
+        name: Build, test and push
+        image: docker/compose:1.21.2
+        caches:
+          - docker
+        script:
+          - docker login --username $QUAY_HUB_USERNAME --password $QUAY_HUB_PASSWORD quay.io
+          - export DOCKER_IMAGE_TAG=$(echo $BITBUCKET_BRANCH | sed "s/feature\///" | sed "s/-/_/g" | sed s#/#_#g)
+          - docker-compose build release
+          - docker-compose push release
+        services:
+          - docker
+  branches:
+    master:
+      - step:
+          name: Build, test, tag (test) and push
+          image: docker/compose:1.21.2
+          caches:
+            - docker
+          script:
+            - docker login --username $QUAY_HUB_USERNAME --password $QUAY_HUB_PASSWORD quay.io
+            - export DOCKER_IMAGE_TAG=test
+            - docker-compose build release
+            - docker-compose push release
+          services:
+            - docker
+    release:
+      - step:
+          name: Build, test, tag (release) and push
+          image: docker/compose:1.21.2
+          caches:
+            - docker
+          script:
+            - docker login --username $QUAY_HUB_USERNAME --password $QUAY_HUB_PASSWORD quay.io
+            - export DOCKER_IMAGE_TAG=release
+            - docker-compose build release
+            - docker-compose push release
+          services:
+            - docker
