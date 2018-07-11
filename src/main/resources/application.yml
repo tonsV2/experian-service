@@ -1,0 +1,4 @@
+experian:
+  client:
+    username: ${EXPERIAN_USERNAME}
+    password: ${EXPERIAN_PASSWORD}
