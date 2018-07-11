@@ -14,8 +14,7 @@ class ExperianController(private val experianClientConfiguration: ExperianClient
     @GetMapping("/check")
     fun getCheckPerson(@RequestParam cpr: String): PersonAdresseData? {
         val client = Person().personSoap
-        val username = experianClientConfiguration.username
-        return client.soegPersonCpr(username, experianClientConfiguration.password, cpr)
+        return client.soegPersonCpr(experianClientConfiguration.username, experianClientConfiguration.password, cpr)
     }
 
     @GetMapping("/check-company")
