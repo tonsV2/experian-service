@@ -1,4 +1,4 @@
-package eu.energisk.experian.service
+package eu.energisk.experian
 
 import org.junit.Test
 import org.junit.runner.RunWith

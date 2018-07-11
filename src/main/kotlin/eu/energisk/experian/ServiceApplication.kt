@@ -1,4 +1,4 @@
-package eu.energisk.experian.service
+package eu.energisk.experian
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
