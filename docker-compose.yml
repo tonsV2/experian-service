@@ -1,6 +1,7 @@
 version: "3"
 services:
   release:
+    image: quay.io/energisk/experian-service:${DOCKER_IMAGE_TAG}
     build:
       context: .
       args:
