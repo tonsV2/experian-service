@@ -2,6 +2,7 @@ buildscript {
     ext {
         kotlinVersion = '1.2.51'
         springBootVersion = '2.0.3.RELEASE'
+        mockkVersion = '1.8.5'
     }
     repositories {
         mavenCentral()
@@ -56,4 +57,6 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     compile "org.jetbrains.kotlin:kotlin-reflect"
     testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.0.0'
+    testImplementation "io.mockk:mockk:${mockkVersion}"
 }
