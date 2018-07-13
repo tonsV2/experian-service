@@ -2,3 +2,14 @@ experian:
   client:
     username: ${EXPERIAN_USERNAME}
     password: ${EXPERIAN_PASSWORD}
+
+---
+
+spring:
+  profiles:
+    active: test
+
+experian:
+  client:
+    username: username
+    password: password
