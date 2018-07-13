@@ -1,6 +1,5 @@
 package eu.energisk.experian.service
 
-import eu.energisk.experian.ExperianClient
 import org.springframework.stereotype.Service
 
 @Service
