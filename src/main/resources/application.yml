@@ -6,8 +6,7 @@ experian:
 ---
 
 spring:
-  profiles:
-    active: test
+  profiles: test
 
 experian:
   client:
