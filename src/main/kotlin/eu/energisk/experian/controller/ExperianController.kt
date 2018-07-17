@@ -14,7 +14,7 @@ class ExperianController(private val experianService: ExperianService) {
             val paymentRemarks = experianService.queryPersonPaymentRemarks(cpr)
             ResponseEntity.ok(ExperianResponse("success", paymentRemarks, true))
         } catch (e: ExperianException) {
-            ResponseEntity.badRequest().body(e.text)
+            ResponseEntity.ok(ExperianResponse(e.text, null, false))
         }
     }
 
@@ -24,13 +24,13 @@ class ExperianController(private val experianService: ExperianService) {
             val paymentRemarks = experianService.queryCompanyPaymentRemarks(cvr)
             ResponseEntity.ok(ExperianResponse("success", paymentRemarks, true))
         } catch (e: ExperianException) {
-            ResponseEntity.badRequest().body(e.text)
+            ResponseEntity.ok(ExperianResponse(e.text, null, false))
         }
     }
 }
 
 class ExperianResponse(
         val message: String,
-        @JsonProperty("payment-remarks") val paymentRemarks: Boolean,
+        @JsonProperty("payment-remarks") val paymentRemarks: Boolean?,
         @JsonProperty("name-match") val nameMatch: Boolean
 )
