@@ -47,7 +47,7 @@ repositories {
 }
 
 dependencies {
-    compile 'dk.rki.webservices:client:0.0.1-SNAPSHOT'
+    compile 'dk.rki.webservices:client:0.0.1'
     compile 'javax.xml.ws:jaxws-api:2.1'
 
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.9.6'
