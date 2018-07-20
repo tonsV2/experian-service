@@ -9,19 +9,13 @@ import org.springframework.web.bind.annotation.*
 @RestController
 class ExperianController(private val experianService: ExperianService) {
     @PostMapping("/check")
-    fun getCheckPerson(@RequestParam cpr: String): ResponseEntity<*> {
+    fun getCheckPerson(@RequestParam(required = false) cpr: String?, @RequestParam(required = false) cvr: String?): ResponseEntity<*> {
         return try {
-            val paymentRemarks = experianService.queryPersonPaymentRemarks(cpr)
-            ResponseEntity.ok(ExperianResponse("success", paymentRemarks, true))
-        } catch (e: ExperianException) {
-            ResponseEntity.ok(ExperianResponse(e.text, null, false))
-        }
-    }
-
-    @PostMapping("/check-company")
-    fun getCheckCompany(@RequestParam cvr: String): ResponseEntity<*> {
-        return try {
-            val paymentRemarks = experianService.queryCompanyPaymentRemarks(cvr)
+            val paymentRemarks = when {
+                cvr != null -> experianService.queryCompanyPaymentRemarks(cvr)
+                cpr != null -> experianService.queryPersonPaymentRemarks(cpr)
+                else -> throw ExperianException(-1, "cpr or cvr parameter is required", "")
+            }
             ResponseEntity.ok(ExperianResponse("success", paymentRemarks, true))
         } catch (e: ExperianException) {
             ResponseEntity.ok(ExperianResponse(e.text, null, false))
