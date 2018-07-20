@@ -37,7 +37,7 @@ pipelines:
             - docker
           script:
             - docker login --username $QUAY_HUB_USERNAME --password $QUAY_HUB_PASSWORD quay.io
-            - export DOCKER_IMAGE_TAG=release
+            - export DOCKER_IMAGE_TAG=prod
             - docker-compose build release
             - docker-compose push release
           services:
