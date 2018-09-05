@@ -6,5 +6,8 @@ Copy .env.dist to .env and fill in your credentials
 ## Development
 set -a && source .env && ./gradlew bootRun
 
-## Docker
+## Launch
 docker-compose up
+
+## Run tests
+./gradlew test
