@@ -23,7 +23,7 @@ internal class ExperianClientImplTest {
         client.searchCreditHistoryByCpr(cpr)
 
         verify(exactly = 1) {
-            personSoap.soegPersonRegistreringCpr(eq("username"), eq("password"), eq(cpr))
+            personSoap.soegPersonRegistreringCpr("username", "password", cpr)
         }
     }
 
@@ -41,7 +41,7 @@ internal class ExperianClientImplTest {
         client.searchCreditHistoryByCvr(cvr)
 
         verify(exactly = 1) {
-            firmaSoap.soegFirmaRegistreringCvr(eq("username"), eq("password"), eq(cvr))
+            firmaSoap.soegFirmaRegistreringCvr("username", "password", cvr)
         }
     }
 }
