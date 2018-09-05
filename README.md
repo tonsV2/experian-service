@@ -4,7 +4,7 @@
 Copy .env.dist to .env and fill in your credentials
 
 ## Development
-source .env && ./gradlew bootRun
+set -a && source .env && ./gradlew bootRun
 
 ## Docker
 docker-compose up
