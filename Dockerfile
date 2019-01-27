@@ -3,8 +3,7 @@ ARG mavenUser
 ARG mavenPass
 WORKDIR /src
 ADD . .
-RUN mkdir /root/.gradle && echo -e "mavenUser=$mavenUser\nmavenPass=$mavenPass\n" > /root/.gradle/gradle.properties
-RUN ./gradlew clean bootJar
+RUN ./gradlew -PmavenUser=$mavenUser -PmavenPassword=$mavenPass clean bootJar
 
 FROM quay.io/energisk/launcher-java
 ENV artifactId experian-service
